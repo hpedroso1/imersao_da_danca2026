@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Imersão de Dança 2026 — Londres & Paris</title>
+  <meta name="description" content="Viagem imersiva a Londres & Paris para bailarinas: aulas, roteiro histórico e experiências culturais. Turmas em maio/junho e junho/julho de 2026." />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --ff-title: "Playfair Display", serif;
+      --ff-body: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+      --navy: #1a2332;
+      --charcoal: #2c3e50;
+      --slate: #4a5568;
+      --gray: #718096;
+      --light-gray: #e2e8f0;
+      --cream: #faf9f7;
+      --white: #ffffff;
+      --accent: #8b5a2b;
+      --accent-light: #d4af37;
+
+      --radius: 8px;
+      --shadow: 0 4px 20px rgba(0,0,0,.08);
+      --shadow-hover: 0 8px 30px rgba(0,0,0,.12);
+      --maxw: 1200px;
+    }
+
+    html,body{height:100%}
+    body{
+      margin:0; color:var(--charcoal); background:var(--cream);
+      font-family:var(--ff-body); font-size:16px; line-height:1.7;
+      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    }
+    h1,h2,h3{font-family:var(--ff-title); letter-spacing:-0.02em; margin:0 0 1rem; color:var(--navy)}
+    h1{font-size:48px; line-height:1.1; font-weight:600}
+    h2{font-size:36px; line-height:1.2; font-weight:600}
+    h3{font-size:24px; line-height:1.3; font-weight:500}
+    p{color:var(--slate); margin:0 0 1rem}
+
+
+    /* Buttons */
+    .btn{
+      display:inline-block; padding:12px 24px; border-radius:var(--radius); font-weight:500; text-align:center; text-decoration:none;
+      transition:all 0.2s ease; font-size:15px;
+    }
+     .btn--primary{background:var(--navy); color:var(--white); border:1px solid var(--navy)}
+     .btn--primary:hover{background:var(--charcoal); transform:translateY(-1px); box-shadow:var(--shadow-hover)}
+     .btn--secondary{background:rgba(255,255,255,0.9); color:var(--navy); border:1px solid rgba(255,255,255,0.9); backdrop-filter:blur(10px)}
+     .btn--secondary:hover{background:var(--white); transform:translateY(-1px); box-shadow:var(--shadow-hover)}
+     .btn--ghost{background:transparent; color:var(--navy); border:1px solid var(--light-gray)}
+     .btn--ghost:hover{background:var(--light-gray); border-color:var(--navy)}
+    .rule{height:1px; background:var(--light-gray); border:0; margin:2rem 0}
+
+    /* Hero */
+    .hero{
+       position:relative; min-height:100vh; display:flex; align-items:center; overflow:hidden;
+       background:linear-gradient(135deg, var(--cream) 0%, #f5f3f0 100%);
+    }
+    .hero__bg{position:absolute; inset:0; z-index:0; overflow:hidden}
+    .hero__img{
+      width:100%; height:100%; object-fit:cover; object-position:center;
+      filter:brightness(0.4) contrast(1.1);
+    }
+    .hero__overlay{
+      position:absolute; inset:0; z-index:1;
+      background:linear-gradient(135deg, rgba(26,35,50,0.7) 0%, rgba(26,35,50,0.3) 100%);
+    }
+     .hero__content{position:relative; z-index:2; width:min(100%, var(--maxw)); padding:0 24px; color:var(--white); text-align:left; margin:0 auto; display:grid; grid-template-columns:1fr auto; gap:40px; align-items:center}
+     .hero__text{max-width:600px}
+     .hero__logo img{max-width:200px; height:auto; filter:brightness(0) invert(1)}
+     .hero h1{font-size: clamp(42px, 5vw, 56px); line-height:1.1; margin-bottom:1.5rem; color:var(--white)}
+     .hero p{font-size:18px; opacity:0.9; margin-bottom:2rem; color:var(--white)}
+     .hero__actions{display:flex; gap:16px; align-items:center; flex-wrap:wrap; margin-top:2rem}
+     .hero__dates{display:flex; gap:12px; flex-wrap:wrap; margin-top:1.5rem}
+     .tag{background:rgba(255,255,255,0.15); color:var(--white); padding:8px 16px; border-radius:var(--radius); font-size:14px; backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.2)}
+     .scroll-indicator{position:absolute; bottom:32px; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:8px; color:var(--white); font-size:12px; letter-spacing:0.1em; text-transform:uppercase; opacity:0.8; z-index:10}
+     .mouse{width:20px; height:32px; border:2px solid var(--white); border-radius:12px; position:relative}
+     .mouse::after{content:""; position:absolute; top:6px; left:50%; transform:translateX(-50%); width:3px; height:6px; background:var(--white); border-radius:2px; animation:wheel 2s infinite ease-in-out}
+     @keyframes wheel{0%{opacity:0; transform:translate(-50%,0)} 50%{opacity:1} 100%{transform:translate(-50%,8px); opacity:0}}
+     
+     /* Responsividade do Scroll Indicator */
+     @media (max-width:768px){
+       .scroll-indicator{bottom:20px; font-size:11px; gap:6px}
+       .mouse{width:18px; height:28px}
+       .mouse::after{width:2px; height:5px; top:5px}
+     }
+     @media (max-width:480px){
+       .scroll-indicator{bottom:16px; font-size:10px; gap:4px}
+       .mouse{width:16px; height:24px}
+       .mouse::after{width:2px; height:4px; top:4px}
+     }
+
+     /* Bailarina Section */
+     .bailarina-section{
+       padding:60px 24px; background:var(--white); display:flex; justify-content:center; align-items:center; height:300px;
+     }
+     .bailarina-container{
+       width:200px; height:200px; display:flex; justify-content:center; align-items:center;
+     }
+     .bailarina-img{
+       width:100%; height:100%; object-fit:contain; filter:drop-shadow(0 10px 30px rgba(0,0,0,0.1));
+     }
+     
+     /* Responsividade do Hero */
+     @media (max-width:768px){
+       .hero__content{grid-template-columns:1fr; gap:20px; text-align:center}
+       .hero__logo{order:-1; margin-bottom:1rem}
+       .hero__text{max-width:100%}
+       .hero h1{font-size: clamp(32px, 8vw, 48px)}
+       .hero p{font-size:16px}
+     }
+     
+     /* Responsividade da Bailarina */
+     @media (max-width:768px){
+       .bailarina-section{height:200px; padding:40px 24px}
+       .bailarina-container{width:150px; height:150px}
+     }
+     
+     /* Responsividade das Datas */
+     @media (max-width:768px){
+       .dates-cards{grid-template-columns:1fr; gap:1.5rem; max-width:400px}
+       .date-card-elegant{padding:1.5rem}
+       .dates-title h3{font-size:24px}
+       .date-month{font-size:16px}
+       .date-days{font-size:14px}
+     }
+     
+     /* Responsividade Geral */
+     @media (max-width:480px){
+       .section{padding:40px 16px}
+       .hero__content{padding:0 16px}
+       .bailarina-section{padding:30px 16px}
+       .dates-elegant{margin:2rem 0}
+       .date-card-elegant{padding:1rem}
+       h1{font-size:32px}
+       h2{font-size:28px}
+       h3{font-size:20px}
+       .btn{padding:10px 20px; font-size:14px}
+       .hero__actions{gap:12px; flex-direction:column; align-items:stretch}
+       .hero__actions .btn{width:100%; text-align:center}
+       .lead{font-size:16px}
+       .wrap{padding:0 16px}
+     }
+
+    /* Sections */
+    .section{padding: clamp(60px, 8vw, 100px) 24px}
+    .section .wrap{max-width:var(--maxw); margin:0 auto}
+    .lead{font-size:18px; max-width:700px; color:var(--slate); line-height:1.6}
+
+    /* Cards grid */
+     .grid{display:grid; gap:24px}
+    .grid--3{grid-template-columns: repeat(3, minmax(0,1fr))}
+    .grid--2{grid-template-columns: repeat(2, minmax(0,1fr))}
+    @media (max-width:980px){.grid--3{grid-template-columns:1fr 1fr}}
+    @media (max-width:680px){.grid--3,.grid--2{grid-template-columns:1fr}}
+     @media (max-width:480px){.grid{gap:16px}}
+
+    .card{
+       background:var(--white); border:1px solid var(--light-gray); border-radius:var(--radius); padding:32px; box-shadow:var(--shadow);
+       transition: all 0.3s ease;
+     }
+     .card:hover{transform:translateY(-4px); box-shadow:var(--shadow-hover)}
+     .card__icon{width:48px; height:48px; border-radius:var(--radius); display:grid; place-items:center; background:var(--light-gray); margin-bottom:1rem}
+     .muted{color:var(--gray)}
+     
+     /* Responsividade dos Cards */
+     @media (max-width:768px){
+       .card{padding:24px}
+       .card__icon{width:40px; height:40px}
+     }
+     @media (max-width:480px){
+       .card{padding:20px}
+       .card__icon{width:36px; height:36px}
+     }
+
+    /* Program bullets */
+    .list{padding:0; margin:0; list-style:none; display:grid; gap:12px}
+    .list li{display:flex; align-items:flex-start; gap:12px}
+    .list .dot{width:6px; height:6px; border-radius:50%; background:var(--accent); margin-top:8px; flex:0 0 auto}
+
+    /* Pricing */
+    .pricing{display:grid; gap:24px; grid-template-columns: repeat(2, minmax(0,1fr))}
+    @media (max-width:860px){.pricing{grid-template-columns:1fr}}
+    .price-card{border:1px solid var(--light-gray); border-radius:var(--radius); background:var(--white); padding:32px; box-shadow:var(--shadow); transition:all 0.3s ease}
+    .price-card:hover{transform:translateY(-2px); box-shadow:var(--shadow-hover)}
+    .price{font-size:32px; font-weight:600; color:var(--navy); margin-bottom:0.5rem}
+    .note{font-size:14px; color:var(--gray)}
+
+    /* CTA final */
+    .cta{background:var(--navy); color:var(--white)}
+    .cta h2, .cta p{color:var(--white)}
+    .cta .btn--primary{background:var(--white); color:var(--navy); border-color:var(--white)}
+    .cta .btn--primary:hover{background:var(--light-gray); transform:translateY(-1px)}
+    .cta .btn--ghost{border-color:var(--white); color:var(--white)}
+    .cta .btn--ghost:hover{background:rgba(255,255,255,0.1)}
+
+    /* Form */
+     .form-container{display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; max-width:1200px; margin:0 auto}
+     .form{display:grid; gap:20px}
+    .field{display:grid; gap:8px}
+     .field label{font-size:14px; font-weight:500; color:var(--charcoal)}
+     .input, select, textarea{border:1px solid var(--light-gray); border-radius:var(--radius); padding:12px 16px; font:inherit; background:var(--white); color:var(--charcoal); transition:border-color 0.2s ease; width:100%; box-sizing:border-box; font-size:16px}
+     .input:focus, select:focus, textarea:focus{outline:none; border-color:var(--navy)}
+     .form small{color:var(--gray)}
+     .form .grid--2{display:grid; grid-template-columns:1fr 1fr; gap:20px}
+     @media (max-width:680px){.form .grid--2{grid-template-columns:1fr}}
+     @media (max-width:480px){
+       .form{gap:16px}
+       .input, select, textarea{padding:10px 14px; font-size:16px}
+       .field label{font-size:13px}
+     }
+     
+     /* Form Image */
+     .form-image{display:flex; justify-content:center; align-items:center}
+     .form-image img{width:100%; max-width:400px; height:auto; border-radius:var(--radius); box-shadow:var(--shadow)}
+     
+     /* Responsividade do Form */
+     @media (max-width:768px){
+       .form-container{grid-template-columns:1fr; gap:30px}
+       .form-image{order:-1}
+       .form-image img{max-width:300px}
+     }
+     @media (max-width:480px){
+       .form-container{gap:20px}
+       .form-image img{max-width:250px}
+     }
+
+     /* Video Section */
+     .video-container{display:flex; justify-content:center; margin-top:2rem}
+     .video-wrapper{
+       position:relative; width:100%; max-width:800px; aspect-ratio:16/9;
+       border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow-hover)
+     }
+     .video-wrapper iframe{
+       position:absolute; top:0; left:0; width:100%; height:100%; border:0
+     }
+
+     /* Dates Elegant */
+     .dates-elegant{
+       margin:3rem 0; text-align:center;
+     }
+     .dates-title h3{
+       font-family:var(--ff-title); font-size:28px; color:var(--navy); margin-bottom:0.5rem;
+     }
+     .dates-title p{
+       color:var(--slate); font-size:16px; margin-bottom:2rem;
+     }
+     .dates-cards{
+       display:grid; grid-template-columns:repeat(2, 1fr); gap:2rem; max-width:700px; margin:0 auto;
+     }
+     .date-card-elegant{
+       background:var(--white); border:2px solid var(--light-gray); border-radius:var(--radius);
+       padding:2rem; transition:all 0.3s ease; position:relative; overflow:hidden;
+     }
+     .date-card-elegant::before{
+       content:''; position:absolute; top:0; left:0; right:0; height:4px;
+       background:linear-gradient(90deg, var(--accent), var(--accent-light));
+     }
+     .date-card-elegant:hover{
+       transform:translateY(-4px); box-shadow:var(--shadow-hover); border-color:var(--accent);
+     }
+     .date-header{
+       display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;
+     }
+     .date-badge{
+       background:var(--navy); color:var(--white); padding:6px 12px; border-radius:20px;
+       font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:0.5px;
+     }
+     .date-year{
+       color:var(--gray); font-size:14px; font-weight:500;
+     }
+     .date-content{
+       text-align:left;
+     }
+     .date-month{
+       font-size:18px; font-weight:600; color:var(--navy); margin-bottom:0.5rem;
+       font-family:var(--ff-title);
+     }
+     .date-days{
+       font-size:16px; color:var(--slate); font-weight:500;
+     }
+
+
+    /* Reveal on scroll */
+    .reveal{opacity:0; transform:translateY(16px); transition:opacity .7s ease, transform .7s ease}
+    .reveal.is-visible{opacity:1; transform:translateY(0)}
+
+    /* Galeria */
+    .section--galeria{background:var(--white)}
+    .gallery{display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:20px}
+    @media (max-width:980px){.gallery{grid-template-columns:1fr 1fr}}
+    @media (max-width:640px){.gallery{grid-template-columns:1fr}}
+    @media (max-width:480px){
+      .gallery{gap:16px}
+      .figure img{height:200px}
+    }
+    .figure{
+      position:relative; overflow:hidden; border-radius:var(--radius); border:1px solid var(--light-gray); background:var(--white); box-shadow:var(--shadow); transition:all 0.3s ease
+    }
+    .figure:hover{transform:translateY(-2px); box-shadow:var(--shadow-hover)}
+    .figure img{display:block; width:100%; height:280px; object-fit:cover; transition:transform 0.5s ease}
+    .figure:hover img{transform:scale(1.03)}
+    .figcap{
+      position:absolute; inset:auto 16px 16px 16px; background:rgba(26,35,50,0.85); color:var(--white); border-radius:var(--radius); padding:12px 16px; font-size:14px; font-weight:500
+    }
+
+    /* Painel do editor de imagens */
+    .img-editor{
+      margin-top:18px; border:1px dashed var(--paris-blue); background:color-mix(in oklab, var(--blush) 35%, #fff); border-radius:12px; padding:14px
+    }
+    .img-grid{display:grid; gap:10px; grid-template-columns: repeat(2, minmax(0,1fr))}
+    @media (max-width:760px){.img-grid{grid-template-columns:1fr}}
+    .img-editor label{font-size:13px; font-weight:600}
+    .img-editor input{width:100%; padding:10px 12px; border:1px solid var(--fog); border-radius:10px; font:inherit}
+
+    /* Accessibility & motion */
+    @media (prefers-reduced-motion:reduce){
+      *{animation:none !important; transition:none !important}
+      .hero__img{transform:none}
+    }
+  </style>
+
+  <!-- ==========================
+       IMAGENS (EDITE AQUI)
+       Cole os links das suas fotos nos campos abaixo.
+       ========================== -->
+  <script>
+    // Troque os URLs e salve. Ex.: "assets/hero.jpg"
+    const IMAGENS = {
+      hero: "assets/hero.jpg",
+      paris1: "assets/paris1.jpg",
+      paris2: "assets/paris2.jpg",
+      paris3: "assets/paris3.jpg",
+      london1:"assets/london1.jpg",
+      london2:"assets/london2.jpg",
+      london3:"assets/london3.jpg"
+    };
+  </script>
+</head>
+<body>
+
+
+  <!-- Hero -->
+  <section class="hero" aria-label="Abertura com imagem">
+    <div class="hero__bg" aria-hidden="true">
+      <img id="img-hero" class="hero__img" src="" alt="Imagem hero da viagem" />
+      <div class="hero__overlay"></div>
+    </div>
+
+    <div class="hero__content">
+      <div class="hero__text">
+        <h1>Imersão de Dança 2026<br>Londres & Paris</h1>
+        <p>Uma experiência única para bailarinas que desejam aprimorar sua técnica, conhecer a tradição do ballet europeu e viver momentos inesquecíveis nas duas capitais mais importantes da dança clássica.</p>
+        <div class="hero__actions">
+          <a href="#inscricao" class="btn btn--primary">Reservar vaga</a>
+          <a href="#sobre" class="btn btn--secondary">Conhecer programa</a>
+      </div>
+      </div>
+      <div class="hero__logo">
+        <img src="logo.png" alt="Logo Imersão de Dança 2026" />
+      </div>
+    </div>
+
+    <div class="scroll-indicator" aria-hidden="true"><div class="mouse"></div><div>scroll</div></div>
+  </section>
+
+  <!-- Bailarina -->
+  <section class="bailarina-section">
+    <div class="bailarina-container">
+      <img src="bailarina1.png" alt="Bailarina em pose clássica" class="bailarina-img" />
+    </div>
+  </section>
+
+  <!-- Sobre -->
+  <section id="sobre" class="section">
+    <div class="wrap">
+      <h2 class="reveal">Sobre a Imersão</h2>
+      <p class="lead reveal">Uma experiência única que combina o melhor da tradição clássica francesa com a inovação britânica, oferecendo às bailarinas uma oportunidade de aprimorar sua técnica e conhecer a história da dança em seus berços culturais.</p>
+      
+      <!-- Datas das Turmas - Design Elegante -->
+      <div class="dates-elegant reveal">
+        <div class="dates-title">
+          <h3>Datas das Turmas 2026</h3>
+          <p>Escolha a turma que melhor se adequa à sua agenda</p>
+        </div>
+        <div class="dates-cards">
+          <div class="date-card-elegant">
+            <div class="date-header">
+              <span class="date-badge">Turma 1</span>
+              <span class="date-year">2026</span>
+            </div>
+            <div class="date-content">
+              <div class="date-month">Maio - Junho</div>
+              <div class="date-days">29 mai → 07 jun</div>
+            </div>
+          </div>
+          <div class="date-card-elegant">
+            <div class="date-header">
+              <span class="date-badge">Turma 2</span>
+              <span class="date-year">2026</span>
+            </div>
+            <div class="date-content">
+              <div class="date-month">Junho - Julho</div>
+              <div class="date-days">28 jun → 09 jul</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <hr class="rule reveal" />
+      <div class="grid grid--3" style="margin-top:2rem">
+        <div class="card reveal">
+          <div class="card__icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="var(--navy)" stroke-width="1.5"/></svg>
+          </div>
+          <h3>Excelência Técnica</h3>
+          <p class="muted">Aulas com professores renomados em estúdios históricos, focando no aprimoramento da técnica clássica e contemporânea.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card__icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="var(--navy)" stroke-width="1.5"/><polyline points="9,22 9,12 15,12 15,22" stroke="var(--navy)" stroke-width="1.5"/></svg>
+          </div>
+          <h3>Patrimônio Cultural</h3>
+          <p class="muted">Visitas guiadas aos principais teatros, museus e espaços históricos que marcaram a evolução da dança clássica.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card__icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="var(--navy)" stroke-width="1.5"/><path d="M12 1v6m0 6v6m11-7h-6m-6 0H1" stroke="var(--navy)" stroke-width="1.5"/></svg>
+          </div>
+          <h3>Experiência Única</h3>
+          <p class="muted">Sessões fotográficas profissionais, espetáculos exclusivos e momentos de confraternização em cenários únicos.</p>
+        </div>
+      </div>
+          </div>
+  </section>
+
+  <!-- Vídeo -->
+  <section class="section" style="background:var(--white)">
+    <div class="wrap">
+      <h2 class="reveal">Veja um pouco mais sobre o programa</h2>
+      <p class="lead reveal">Conheça mais detalhes sobre esta experiência única através do nosso vídeo explicativo.</p>
+      <div class="video-container reveal">
+        <div class="video-wrapper">
+          <iframe 
+            src="https://www.youtube.com/embed/SEU_VIDEO_ID_AQUI" 
+            title="Imersão de Dança 2026 - Londres & Paris" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Incluso -->
+  <section id="incluso" class="section" style="background:var(--white)">
+    <div class="wrap">
+      <h2 class="reveal">O que está incluso</h2>
+      <div class="grid grid--3" style="margin-top:2rem">
+        <div class="card reveal">
+          <h3>Transporte & Hospedagem</h3>
+          <ul class="list">
+            <li><span class="dot"></span><span>Passagem aérea internacional (classe econômica)</span></li>
+            <li><span class="dot"></span><span>Transfers aeroporto-hotel-aeroporto</span></li>
+            <li><span class="dot"></span><span>4 noites em Londres + 3 noites em Paris</span></li>
+            <li><span class="dot"></span><span>Café da manhã incluído</span></li>
+          </ul>
+        </div>
+        <div class="card reveal">
+          <h3>Assistência & Suporte</h3>
+          <ul class="list">
+            <li><span class="dot"></span><span>Assessoria completa para vistos e documentação</span></li>
+            <li><span class="dot"></span><span>Reunião preparatória antes da viagem</span></li>
+            <li><span class="dot"></span><span>Monitoria 24h durante toda a estadia</span></li>
+            <li><span class="dot"></span><span>Seguro viagem internacional</span></li>
+          </ul>
+        </div>
+        <div class="card reveal">
+          <h3>Experiências Exclusivas</h3>
+          <ul class="list">
+            <li><span class="dot"></span><span>Sessão fotográfica profissional</span></li>
+            <li><span class="dot"></span><span>Fotolivro personalizado (alunas)</span></li>
+            <li><span class="dot"></span><span>Kit de viagem exclusivo</span></li>
+            <li><span class="dot"></span><span>Certificado de participação</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Roteiro -->
+  <section id="roteiro" class="section" style="background:var(--cream)">
+    <div class="wrap">
+      <h2 class="reveal">Programa Cultural</h2>
+      <p class="lead reveal">Um roteiro cuidadosamente elaborado que combina aulas de dança, visitas culturais e experiências únicas em cada cidade.</p>
+      <div class="grid grid--2" style="margin-top:2rem">
+        <div class="card reveal">
+          <h3>Londres (4 dias)</h3>
+          <ul class="list">
+            <li><span class="dot"></span><span>Aulas de ballet em estúdios históricos</span></li>
+            <li><span class="dot"></span><span>Espetáculo no Royal Opera House</span></li>
+            <li><span class="dot"></span><span>Musical no West End</span></li>
+            <li><span class="dot"></span><span>Museu Victoria and Albert (V&A)</span></li>
+            <li><span class="dot"></span><span>Tour pelos ícones: Buckingham Palace, St Paul's, Hyde Park</span></li>
+          </ul>
+        </div>
+        <div class="card reveal">
+          <h3>Paris (3 dias)</h3>
+          <ul class="list">
+            <li><span class="dot"></span><span>Visita guiada à Ópera Garnier</span></li>
+            <li><span class="dot"></span><span>Aulas de dança em estúdios parisienses</span></li>
+            <li><span class="dot"></span><span>Museus d'Orsay e Louvre</span></li>
+            <li><span class="dot"></span><span>Jantar de confraternização no Sena</span></li>
+            <li><span class="dot"></span><span>Tour pelos ícones: Torre Eiffel, Arco do Triunfo, Notre-Dame</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Galeria -->
+  <section id="galeria" class="section section--galeria">
+    <div class="wrap">
+      <h2 class="reveal">Galeria</h2>
+      <p class="lead reveal">Conheça alguns dos locais e experiências que fazem parte desta imersão única.</p>
+
+      <h3 style="margin-top:2rem" class="reveal">Paris</h3>
+      <div class="gallery" style="margin-top:1rem">
+        <figure class="figure reveal">
+          <img id="img-paris-1" src="" alt="Ópera Garnier, Paris" loading="lazy" />
+          <figcaption class="figcap">Ópera Garnier</figcaption>
+        </figure>
+        <figure class="figure reveal">
+          <img id="img-paris-2" src="" alt="Torre Eiffel, Paris" loading="lazy" />
+          <figcaption class="figcap">Torre Eiffel</figcaption>
+        </figure>
+        <figure class="figure reveal">
+          <img id="img-paris-3" src="" alt="Museu do Louvre, Paris" loading="lazy" />
+          <figcaption class="figcap">Museu do Louvre</figcaption>
+        </figure>
+      </div>
+
+      <h3 style="margin-top:2.5rem" class="reveal">Londres</h3>
+      <div class="gallery" style="margin-top:1rem">
+        <figure class="figure reveal">
+          <img id="img-london-1" src="" alt="Royal Opera House, Londres" loading="lazy" />
+          <figcaption class="figcap">Royal Opera House</figcaption>
+        </figure>
+        <figure class="figure reveal">
+          <img id="img-london-2" src="" alt="Big Ben, Londres" loading="lazy" />
+          <figcaption class="figcap">Big Ben</figcaption>
+        </figure>
+        <figure class="figure reveal">
+          <img id="img-london-3" src="" alt="Victoria and Albert Museum, Londres" loading="lazy" />
+          <figcaption class="figcap">Victoria and Albert Museum</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Valores -->
+  <section id="valores" class="section" style="background:var(--white)">
+    <div class="wrap">
+      <h2 class="reveal">Investimento</h2>
+      <p class="lead reveal">Valores especiais para esta experiência única, com parcelamento facilitado e sem taxas ocultas.</p>
+      <div class="pricing" style="margin-top:2rem">
+        <div class="price-card reveal">
+          <h3>Bailarina</h3>
+          <div class="price">R$ 28.200,00</div>
+          <p class="note">10x de R$ 2.820,00 + taxa de adesão de R$ 350,00</p>
+          <hr class="rule" />
+          <ul class="list" style="margin-top:1rem">
+            <li><span class="dot"></span><span>Inclui todas as aulas de dança</span></li>
+            <li><span class="dot"></span><span>Sessão fotográfica profissional</span></li>
+            <li><span class="dot"></span><span>Fotolivro personalizado</span></li>
+            <li><span class="dot"></span><span>Parcelamento em até 10x</span></li>
+          </ul>
+        </div>
+        <div class="price-card reveal">
+          <h3>Acompanhante</h3>
+          <div class="price">R$ 26.200,00</div>
+          <p class="note">10x de R$ 2.620,00 + taxa de adesão de R$ 350,00</p>
+          <hr class="rule" />
+          <ul class="list" style="margin-top:1rem">
+            <li><span class="dot"></span><span>Participação nas atividades culturais</span></li>
+            <li><span class="dot"></span><span>Espetáculos e visitas guiadas</span></li>
+            <li><span class="dot"></span><span>Jantar de confraternização</span></li>
+            <li><span class="dot"></span><span>Parcelamento em até 10x</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA + Form -->
+  <section id="inscricao" class="section cta">
+    <div class="wrap">
+      <h2 class="reveal">Reserve sua vaga</h2>
+      <p class="reveal" style="max-width:700px">Preencha o formulário abaixo e nossa equipe entrará em contato para confirmar sua participação e esclarecer todas as dúvidas.</p>
+      <div class="form-container reveal">
+        <form class="form" action="#" onsubmit="return submitLead(event)">
+        <div class="grid grid--2">
+          <div class="field">
+            <label for="nome">Nome completo</label>
+            <input class="input" id="nome" name="nome" placeholder="Seu nome completo" required>
+          </div>
+          <div class="field">
+            <label for="email">E-mail</label>
+            <input class="input" id="email" name="email" type="email" placeholder="seu@email.com" required>
+          </div>
+          <div class="field">
+            <label for="whats">WhatsApp</label>
+            <input class="input" id="whats" name="whats" type="tel" placeholder="(11) 99999-9999" required>
+          </div>
+          <div class="field">
+            <label for="perfil">Perfil</label>
+            <select id="perfil" name="perfil" required>
+              <option value="">Selecione seu perfil</option>
+              <option>Bailarina</option>
+              <option>Acompanhante</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="turma">Turma de interesse</label>
+            <select id="turma" name="turma" required>
+              <option value="">Escolha a turma</option>
+              <option>Turma 1 — 29 de maio a 07 de junho de 2026</option>
+              <option>Turma 2 — 28 de junho a 09 de julho de 2026</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="cidade">Cidade de origem</label>
+            <input class="input" id="cidade" name="cidade" placeholder="Ex.: São Paulo (GRU)">
+            <small>Para cálculo de passagem aérea</small>
+          </div>
+        </div>
+        <div class="field">
+          <label for="msg">Mensagem adicional (opcional)</label>
+          <textarea id="msg" name="mensagem" rows="4" placeholder="Conte-nos sobre sua experiência com dança e expectativas para esta viagem"></textarea>
+        </div>
+        <div style="display:flex; gap:16px; align-items:center; flex-wrap:wrap; margin-top:1rem">
+          <button class="btn btn--primary" type="submit">Solicitar informações</button>
+          <a class="btn btn--ghost" href="#valores">Ver investimento</a>
+        </div>
+        <small style="display:block; margin-top:1rem; opacity:0.9">Seus dados estão protegidos. Entraremos em contato em até 24h.</small>
+      </form>
+        <div class="form-image">
+          <img src="grupo.png" alt="Grupo de bailarinas" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="section" style="background:var(--cream)">
+    <div class="wrap">
+      <h2 class="reveal">Perguntas frequentes</h2>
+      <div class="grid grid--2" style="margin-top:2rem">
+        <details class="card reveal">
+          <summary><strong>Qual o nível técnico necessário para participar?</strong></summary>
+          <p>As aulas são direcionadas para bailarinas de nível intermediário a avançado. Avaliaremos seu perfil através do formulário de inscrição para adequar as atividades ao seu nível.</p>
+        </details>
+        <details class="card reveal">
+          <summary><strong>Posso participar como acompanhante?</strong></summary>
+          <p>Sim, oferecemos pacotes especiais para acompanhantes que incluem todas as atividades culturais, espetáculos e passeios, com valores diferenciados.</p>
+        </details>
+        <details class="card reveal">
+          <summary><strong>O que não está incluso no valor?</strong></summary>
+          <p>Refeições (exceto café da manhã), despesas pessoais, compras e itens não especificados no programa. Todos os custos principais estão incluídos.</p>
+        </details>
+        <details class="card reveal">
+          <summary><strong>Como funciona o parcelamento?</strong></summary>
+          <p>Oferecemos parcelamento em até 10x sem juros via boleto, cartão de crédito ou PIX. A taxa de adesão é paga à vista no momento da confirmação.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="section" style="padding:48px 24px; border-top:1px solid rgba(255,255,255,0.1); background:var(--navy)">
+    <div class="wrap" style="display:flex; gap:16px; align-items:center; justify-content:center; flex-wrap:wrap; flex-direction:column; text-align:center">
+      <div style="display:flex; align-items:center; gap:16px; margin-bottom:1rem">
+        <img src="logo.png" alt="Logo Imersão de Dança 2026" style="max-width:120px; height:auto" />
+        <strong style="font-family:var(--ff-title); letter-spacing:.01em; color:var(--white); font-size:18px">Imersão de Dança 2026</strong>
+      </div>
+      <div style="color:var(--light-gray); font-size:14px">Londres & Paris</div>
+    </div>
+  </footer>
+
+  <script>
+    // Aplica imagens do bloco IMAGENS
+    function applyImages(config){
+      const map = {
+        "img-hero": config.hero,
+        "img-paris-1": config.paris1,
+        "img-paris-2": config.paris2,
+        "img-paris-3": config.paris3,
+        "img-london-1": config.london1,
+        "img-london-2": config.london2,
+        "img-london-3": config.london3
+      };
+      for(const id in map){
+        const el = document.getElementById(id);
+        if(el && map[id]) el.src = map[id];
+      }
+    }
+
+    // Parallax leve no hero
+    const heroImg = document.getElementById('img-hero');
+    window.addEventListener('scroll', () => {
+      const y = Math.min(window.scrollY, 400);
+      if(heroImg){
+        heroImg.style.transform = `translateY(${y * 0.08}px) scale(${1.08 - y * 0.0001})`;
+      }
+    }, { passive:true });
+
+
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.classList.add('is-visible');
+          io.unobserve(e.target);
+        }
+      })
+    }, { threshold:.12 });
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // Form handler (demo)
+    function submitLead(ev){
+      ev.preventDefault();
+      const form = ev.target;
+      const data = Object.fromEntries(new FormData(form).entries());
+      console.log("Lead enviado:", data);
+      alert("Recebemos seu interesse! Em breve entraremos em contato por e-mail/WhatsApp.");
+      form.reset();
+      return false;
+    }
+
+    // Aplica as imagens iniciais
+    applyImages(IMAGENS);
+  </script>
+
+  <!-- Painel simples para COLAR os LINKS das suas imagens (opcional, não persiste) -->
+</body>
+</html>
+
