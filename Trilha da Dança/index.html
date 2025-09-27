@@ -68,15 +68,15 @@
       position:absolute; inset:0; z-index:1;
       background:linear-gradient(135deg, rgba(26,35,50,0.7) 0%, rgba(26,35,50,0.3) 100%);
     }
-     .hero__content{position:relative; z-index:2; width:min(100%, var(--maxw)); padding:0 24px; color:var(--white); text-align:left; margin:0 auto; display:grid; grid-template-columns:1fr auto; gap:40px; align-items:center}
+     .hero__content{position:relative; z-index:2; width:min(100%, var(--maxw)); padding:0 24px 80px 24px; color:var(--white); text-align:left; margin:0 auto; display:grid; grid-template-columns:1fr auto; gap:40px; align-items:center}
      .hero__text{max-width:600px}
      .hero__logo img{max-width:200px; height:auto; filter:brightness(0) invert(1)}
      .hero h1{font-size: clamp(42px, 5vw, 56px); line-height:1.1; margin-bottom:1.5rem; color:var(--white)}
      .hero p{font-size:18px; opacity:0.9; margin-bottom:2rem; color:var(--white)}
-     .hero__actions{display:flex; gap:16px; align-items:center; flex-wrap:wrap; margin-top:2rem}
+     .hero__actions{display:flex; gap:16px; align-items:center; justify-content:center; flex-wrap:wrap; margin-top:2rem; margin-bottom:6rem; position:relative; z-index:5}
      .hero__dates{display:flex; gap:12px; flex-wrap:wrap; margin-top:1.5rem}
      .tag{background:rgba(255,255,255,0.15); color:var(--white); padding:8px 16px; border-radius:var(--radius); font-size:14px; backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.2)}
-     .scroll-indicator{position:absolute; bottom:32px; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:8px; color:var(--white); font-size:12px; letter-spacing:0.1em; text-transform:uppercase; opacity:0.8; z-index:10}
+     .scroll-indicator{position:absolute; bottom:16px; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:8px; color:var(--white); font-size:12px; letter-spacing:0.1em; text-transform:uppercase; opacity:0.8; z-index:3}
      .mouse{width:20px; height:32px; border:2px solid var(--white); border-radius:12px; position:relative}
      .mouse::after{content:""; position:absolute; top:6px; left:50%; transform:translateX(-50%); width:3px; height:6px; background:var(--white); border-radius:2px; animation:wheel 2s infinite ease-in-out}
      @keyframes wheel{0%{opacity:0; transform:translate(-50%,0)} 50%{opacity:1} 100%{transform:translate(-50%,8px); opacity:0}}
@@ -106,11 +106,13 @@
      
      /* Responsividade do Hero */
      @media (max-width:768px){
-       .hero__content{grid-template-columns:1fr; gap:20px; text-align:center}
+       .hero__content{grid-template-columns:1fr; gap:20px; text-align:center; padding:0 24px 60px 24px}
        .hero__logo{order:-1; margin-bottom:1rem}
        .hero__text{max-width:100%}
        .hero h1{font-size: clamp(32px, 8vw, 48px)}
        .hero p{font-size:16px}
+       .hero__actions{margin-bottom:4rem; gap:12px; justify-content:center}
+       .scroll-indicator{bottom:12px}
      }
      
      /* Responsividade da Bailarina */
@@ -121,28 +123,52 @@
      
      /* Responsividade das Datas */
      @media (max-width:768px){
-       .dates-cards{grid-template-columns:1fr; gap:1.5rem; max-width:400px}
-       .date-card-elegant{padding:1.5rem}
+       .dates-cards{gap:1.5rem; max-width:500px; margin:0 auto}
+       .date-card-elegant{padding:1.5rem; margin:0}
        .dates-title h3{font-size:24px}
-       .date-month{font-size:16px}
-       .date-days{font-size:14px}
+       .date-month{font-size:18px; line-height:1.2}
+       .date-days{font-size:16px}
+       .date-header{flex-direction:column; gap:0.5rem; text-align:center}
+       .date-content{text-align:center}
      }
      
      /* Responsividade Geral */
      @media (max-width:480px){
        .section{padding:40px 16px}
-       .hero__content{padding:0 16px}
+       .hero__content{padding:0 16px 50px 16px}
        .bailarina-section{padding:30px 16px}
        .dates-elegant{margin:2rem 0}
        .date-card-elegant{padding:1rem}
+       .dates-cards{max-width:100%; gap:1.2rem}
+       .date-header{flex-direction:column; gap:0.5rem; text-align:center}
+       .date-content{text-align:center}
+       .date-badge{font-size:12px; padding:6px 12px}
+       .date-month{font-size:17px; line-height:1.2}
+       .date-days{font-size:15px}
        h1{font-size:32px}
        h2{font-size:28px}
        h3{font-size:20px}
        .btn{padding:10px 20px; font-size:14px}
-       .hero__actions{gap:12px; flex-direction:column; align-items:stretch}
-       .hero__actions .btn{width:100%; text-align:center}
+       .hero__actions{gap:12px; flex-direction:column; align-items:center; justify-content:center; margin-bottom:3.5rem}
+       .hero__actions .btn{width:100%; max-width:280px; text-align:center}
+       .scroll-indicator{bottom:8px}
        .lead{font-size:16px}
        .wrap{padding:0 16px}
+     }
+     
+     /* Telas muito pequenas */
+     @media (max-width:360px){
+       .section{padding:30px 12px}
+       .hero__content{padding:0 12px 40px 12px}
+       .wrap{padding:0 12px}
+       .date-card-elegant{padding:0.8rem}
+       .price-card{padding:16px}
+       .price-parcel{font-size:20px}
+       .dates-cards{gap:1rem}
+       .date-badge{font-size:11px; padding:5px 10px}
+       .date-month{font-size:16px; line-height:1.2}
+       .date-days{font-size:14px}
+       .hero__actions .btn{max-width:260px}
      }
 
     /* Sections */
@@ -171,12 +197,17 @@
        .card{padding:24px}
        .card__icon{width:40px; height:40px}
        .price-parcel{font-size:26px}
+       .pricing{gap:20px}
+       .price-card{padding:24px}
      }
      @media (max-width:480px){
        .card{padding:20px}
        .card__icon{width:36px; height:36px}
-       .price-parcel{font-size:24px}
+       .price-parcel{font-size:22px}
        .price-total{font-size:14px}
+       .pricing{gap:16px}
+       .price-card{padding:20px}
+       .price-highlight{margin-bottom:0.8rem}
      }
 
     /* Program bullets */
@@ -263,6 +294,9 @@
      .dates-cards{
        display:grid; grid-template-columns:repeat(2, 1fr); gap:2rem; max-width:700px; margin:0 auto;
      }
+     @media (max-width:768px){
+       .dates-cards{grid-template-columns:1fr !important;}
+     }
      .date-card-elegant{
        background:var(--white); border:2px solid var(--light-gray); border-radius:var(--radius);
        padding:2rem; transition:all 0.3s ease; position:relative; overflow:hidden;
@@ -289,7 +323,7 @@
      }
      .date-month{
        font-size:18px; font-weight:600; color:var(--navy); margin-bottom:0.5rem;
-       font-family:var(--ff-title);
+       font-family:var(--ff-title); line-height:1.2; word-wrap:break-word;
      }
      .date-days{
        font-size:16px; color:var(--slate); font-weight:500;
@@ -753,14 +787,46 @@
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
 
-    // Form handler (demo)
+    // Form handler - Google Sheets Integration
     function submitLead(ev){
       ev.preventDefault();
       const form = ev.target;
       const data = Object.fromEntries(new FormData(form).entries());
-      console.log("Lead enviado:", data);
-      alert("Recebemos seu interesse! Em breve entraremos em contato por e-mail/WhatsApp.");
-      form.reset();
+      
+      // Adiciona timestamp
+      data.timestamp = new Date().toLocaleString('pt-BR');
+      
+      // Envia para Google Sheets
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbysh0vooTcAXgpuGFvnd80GD6ffEzIFo5XI0Hcuymz2PN14B3btP8ZpSeY0SLlR6-uc/exec';
+      
+      // Mostra loading
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Enviando...';
+      submitBtn.disabled = true;
+      
+      fetch(scriptURL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+      })
+      .then(() => {
+        alert("✅ Recebemos seu interesse! Em breve entraremos em contato por e-mail/WhatsApp.");
+        form.reset();
+        console.log('Lead enviado:', data);
+      })
+      .catch((error) => {
+        console.error('Erro:', error);
+        alert("❌ Ocorreu um erro. Tente novamente ou entre em contato diretamente.");
+      })
+      .finally(() => {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+      });
+      
       return false;
     }
 
@@ -771,4 +837,3 @@
   <!-- Painel simples para COLAR os LINKS das suas imagens (opcional, não persiste) -->
 </body>
 </html>
-
