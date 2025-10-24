@@ -281,6 +281,27 @@
        position:absolute; top:0; left:0; width:100%; height:100%; border:0
      }
 
+     /* Videos Grid */
+     .videos-grid{
+       display:grid; grid-template-columns:repeat(2, 1fr); gap:2rem; margin-top:2rem;
+     }
+     .video-card{
+       background:var(--white); border:1px solid var(--light-gray); border-radius:var(--radius);
+       padding:1.5rem; box-shadow:var(--shadow); transition:all 0.3s ease;
+     }
+     .video-card:hover{transform:translateY(-2px); box-shadow:var(--shadow-hover)}
+     .video-card h3{
+       font-family:var(--ff-title); font-size:20px; color:var(--navy); margin-bottom:1rem;
+       text-align:center;
+     }
+     .video-card .video-wrapper{
+       max-width:100%; margin:0 auto;
+     }
+     @media (max-width:768px){
+       .videos-grid{grid-template-columns:1fr; gap:1.5rem}
+       .video-card{padding:1rem}
+     }
+
      /* Dates Elegant */
      .dates-elegant{
        margin:3rem 0; text-align:center;
@@ -483,25 +504,39 @@
           </div>
   </section>
 
-  <!-- Vídeo - COMENTADO (descomente quando quiser usar)
+  <!-- Vídeos -->
   <section class="section" style="background:var(--white)">
     <div class="wrap">
-      <h2 class="reveal">Veja um pouco mais sobre o programa</h2>
-      <p class="lead reveal">Conheça mais detalhes sobre esta experiência única através do nosso vídeo explicativo.</p>
-      <div class="video-container reveal">
-        <div class="video-wrapper">
-          <iframe 
-            src="https://www.youtube.com/embed/SEU_VIDEO_ID_AQUI" 
-            title="Imersão de Dança 2026 - Londres & Paris" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen>
-          </iframe>
+      <h2 class="reveal">Conheça mais sobre o programa</h2>
+      <p class="lead reveal">Assista aos nossos vídeos e saiba mais sobre esta experiência única.</p>
+      <div class="videos-grid">
+        <div class="video-card reveal">
+          <h3>Apresentação Trilha da Dança</h3>
+          <div class="video-wrapper">
+            <iframe 
+              src="https://www.youtube.com/embed/upmpWdSrF5w?si=Zc9qW6DMEjEHH8zY" 
+              title="Apresentação Trilha da Dança" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+        <div class="video-card reveal">
+          <h3>Depoimentos de quem já conhece o programa</h3>
+          <div class="video-wrapper">
+            <iframe 
+              src="https://www.youtube.com/embed/XPEHrFeSMrk?si=rT7c-P_DHr9yffTo" 
+              title="Depoimentos de quem já conhece o programa" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen>
+            </iframe>
+          </div>
         </div>
       </div>
     </div>
   </section>
-  -->
 
   <!-- Incluso -->
   <section id="incluso" class="section" style="background:var(--white)">
@@ -838,4 +873,3 @@
   <!-- Painel simples para COLAR os LINKS das suas imagens (opcional, não persiste) -->
 </body>
 </html>
-
